@@ -1,0 +1,20 @@
+body {
+    background-image: url("../img/stethoscope-3467665_1920.jpg");
+    background-repeat: no-repeat;
+}
+
+.card {
+    margin-top: 10rem;
+}
+
+.homebtn {
+    margin-top: 1rem;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: black;
+}
+
+.bi-trash:hover {
+    cursor: pointer !important;
+}
