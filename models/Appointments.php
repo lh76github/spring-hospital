@@ -2,8 +2,14 @@
 
 class Appointments extends Database
 {
-
-    public function addAppointment($dateHour, $idPatients)
+/**
+ * Ajoute un nouveau rendez-vous
+ *
+ * @param string $dateHour
+ * @param string $idPatients
+ * @return void
+ */
+    public function addAppointment(string $dateHour, string $idPatients): void
     {
         $bdd = $this->connectDatabase();
         $req = $bdd->prepare("INSERT INTO `appointments`(dateHour, idPatients) VALUES(:dateHour, :idPatients)");
@@ -12,7 +18,12 @@ class Appointments extends Database
         $req->execute();
     }
 
-    public function getAllAppointments()
+    /**
+     * va chercher tous les RDV sous forme de tableau
+     *
+     * @return array
+     */
+    public function getAllAppointments(): array
     {
         $bdd = $this->connectDatabase();
         $query = "SELECT * FROM `patients`
@@ -22,7 +33,13 @@ class Appointments extends Database
         return $allAppointmentsArray;
     }
 
-    public function getOneAppointment($idAppointment)
+    /**
+     * va chercher un RDV selon un ID spécifique (RDV)
+     *
+     * @param string $idAppointment
+     * @return array
+     */
+    public function getOneAppointment(string $idAppointment): array
     {
         $bdd = $this->connectDatabase();
         $query = "SELECT * FROM `appointments` WHERE `id` = :idAppointment";
@@ -33,7 +50,15 @@ class Appointments extends Database
         return $oneAppointmentArray;
     }
 
-    public function modifyAppointment($idPatients, $dateHour, $idAppointment)
+    /**
+     * Modifier un RDV selon les paramètres spécifiés
+     *
+     * @param string $idPatients
+     * @param string $dateHour
+     * @param string $idAppointment
+     * @return void
+     */
+    public function modifyAppointment(string $idPatients, string $dateHour, string $idAppointment): void
     {
         $bdd = $this->connectDatabase();
         $req = $bdd->prepare("UPDATE `appointments` SET dateHour = :dateHour, idPatients = :idPatients WHERE id = :id");
